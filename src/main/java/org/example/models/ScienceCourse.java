@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.factory.GradeCalculator;
+
 public class ScienceCourse extends Course {
 
     public ScienceCourse() {
@@ -7,7 +9,8 @@ public class ScienceCourse extends Course {
     }
 
     @Override
-    public double calculateGrade(int testScore, int assignmentScore, int attendanceScore) {
-        return 0.3 * testScore + 0.6 * assignmentScore + 0.1 * attendanceScore;
+    public GradeCalculator createGradeCalculator() {
+        return new ScienceGradeCalculator();
     }
+
 }

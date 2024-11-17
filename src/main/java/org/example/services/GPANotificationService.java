@@ -40,7 +40,6 @@ public class GPANotificationService {
             }
             student.update(gradeNotification.toString());
         }
-
     }
 
     protected String getGradeLetter(double score) {

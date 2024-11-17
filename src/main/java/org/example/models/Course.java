@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.factory.GradeCalculator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,12 @@ public abstract class Course {
     public Course(String courseName) {
         this.courseName = courseName;
     }
-    public abstract double calculateGrade(int testScore, int assignmentScore, int attendanceScore);
+
+    public abstract GradeCalculator createGradeCalculator();
+    public double calculateGrade(int testScore, int assignmentScore, int attendanceScore) {
+        GradeCalculator calculator = createGradeCalculator();
+        return calculator.calculateGrade(testScore, assignmentScore, attendanceScore);
+    }
 
     public void enrollStudent(Student student) {
         if (!enrolledStudents.contains(student))
